@@ -1,4 +1,4 @@
-import { offsetTime } from "./sales.utils";
+import { offsetTime } from "./utils";
 
 function interviewSubmit(res) {
     console.log(res);
