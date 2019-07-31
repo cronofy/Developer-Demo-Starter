@@ -1,0 +1,19 @@
+<%- include('../modules/header', {page_title: "Share"}); %>
+
+<div class="page__wrapper">
+
+    <div class="element__wrapper">
+        <p>Pick a day and time that works for you</p>
+        <div id="cronofy-slot-picker"></div>
+    </div>
+
+</div>
+
+<script>
+    const TOKEN = "<%= token %>";
+    const API_DOMAIN = "<%= api_domain %>";
+    const SUB = "<%= sub %>";
+</script>
+<script src="/assets/share.js"></script>
+
+<%- include('../modules/footer'); %>

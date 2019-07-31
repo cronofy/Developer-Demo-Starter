@@ -8,10 +8,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = (env, argv) => ({
     entry: {
         app: "./src/js/app.js",
-        ats: "./src/js/ats.js",
-        meeting: "./src/js/meeting.js",
-        settings: "./src/js/settings.js",
-        team: "./src/js/view-team.js"
+        share: "./src/js/share.js",
+        settings: "./src/js/settings.js"
     },
     output: {
         path: path.resolve(__dirname, "app/assets/"),

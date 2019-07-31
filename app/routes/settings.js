@@ -2,12 +2,6 @@ const connections = require("../connections");
 
 module.exports = (app, options) => {
     app.get("/settings", async (req, res) => {
-        const session = req.session;
-        if (!session.sub) {
-            // If there's no sub set, load the init page
-            return res.redirect("/setup-start");
-        }
-
         const codeQuery = req.query.code;
 
         if (codeQuery) {
@@ -46,7 +40,7 @@ module.exports = (app, options) => {
                         "managed_availability",
                         "account_management"
                     ],
-                    subs: [session.sub],
+                    subs: [process.env.SUB],
                     origin: options.url
                 })
             })
@@ -61,7 +55,6 @@ module.exports = (app, options) => {
         return res.render("pages/settings", {
             token: token.element_token.token,
             api_domain: options.apiDomain,
-            subs: [session.sub],
             error: false,
             url: options.url,
             client_id: process.env.CLIENT_ID
