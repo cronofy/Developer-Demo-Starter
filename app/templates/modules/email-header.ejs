@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../modules/head', { page_title: "Cronofy email: schedule your interview" }); %>
+<body>
+    <header class="header">
+        <span class="visuallyhidden">Schedule your interview</span>
+    </header>
+    <div class="email__nav">
+        <a href="/">Back to Demo App</a>
+    </div>
+    <div class="wrapper__outer wrapper__outer--email">
+        <div class="wrapper__inner">
+            <form action="/confirm" class="email__container">
+                <div class="email__header">
+                    <%- include('../icons/envelope', {className: 'email__meta-icon'}); %>
+                    <div class="email__header-inner">
+                        <div class="email__subject"><%= subject %></div>
+                        <div class="email__meta">
+                            <div class="email__meta-item">
+                                <strong>Evenitron</strong> &lt;<%= from %>&gt;
+                            </div>
+                            <div class="email__meta-item">
+                                <%= date %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="email__body">

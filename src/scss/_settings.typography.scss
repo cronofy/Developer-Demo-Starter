@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "urw-din";
+    src: url("../../public/fonts/din/2CA518_1_0.eot"),
+        url("../../public/fonts/din/2CA518_1_0.woff") format("woff"),
+        url("../../public/fonts/din/2CA518_1_0.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "urw-din";
+    src: url("../../public/fonts/din/2CA518_0_0.eot"),
+        url("../../public/fonts/din/2CA518_0_0.woff") format("woff"),
+        url("../../public/fonts/din/2CA518_0_0.ttf") format("truetype");
+    font-weight: bold;
+    font-style: bold;
+}
+
+// Fonts
+$text: "urw-din", Helvetica, Arial, sans-serif;
+$display: $text;
+// $icons:'FONTNAME';
+$code: Monaco, Menlo, Consolas, "Courier New", monospace;

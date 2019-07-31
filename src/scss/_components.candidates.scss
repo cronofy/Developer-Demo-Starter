@@ -1,0 +1,26 @@
+.candidates {
+    border: 1px solid $grey__tint;
+    min-width: 400px;
+    background: $white;
+}
+
+.candidates__candidate {
+    display: flex;
+    flex-grow: 0;
+    padding: 10px;
+    color: $black;
+    align-items: center;
+    width: 100%;
+    margin-right: 0;
+    justify-content: stretch;
+    &:nth-of-type(2n) {
+        background: $grey__light;
+    }
+}
+
+.candidates__candidate-label {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-grow: 1;
+}

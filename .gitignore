@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+build
+__notes
+*env.json
+coverage
+.cache
+app/assets
+.env

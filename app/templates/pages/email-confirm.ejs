@@ -1,0 +1,14 @@
+<%- include('../modules/email-header', { page_title: "Cronofy email: schedule your interview", from: user.email, subject }); %>
+    <p>Hi <%= name %>,</p>
+    <p><%= user.name %> has booked <%= meetingtype %> with you</p>
+    <% if (title && title !== 'false') { %>
+        <p><strong>Event description:</strong> <%= title %></p>
+    <% } %>
+    <% if (location && location !== 'false') { %>
+        <p><strong>Location:</strong> <%= location %></p>
+    <% } %>
+    <p><strong>Date:</strong> <%= meetingDate %></p>
+    <p><strong>Time:</strong> <%= start %> - <%= end %></p>
+    <p>Regards,</p>
+    <p><%= user.name %></p>
+<%- include('../modules/email-footer', {}); %>

@@ -1,0 +1,58 @@
+.tabs__wrapper {
+}
+
+.tabs__controls {
+    padding: 0 10px;
+    position: relative;
+    display: flex;
+    &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: $teal;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+    }
+}
+
+.tabs__control {
+    @extend %buttonReset;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: inset $grey__tint 0 1px 0 0, inset $grey__tint -1px 0 0 0,
+        inset $grey__tint 1px 0 0 0;
+    font-size: 16px;
+    font-family: $text;
+    padding: 10px 20px;
+    border-radius: 8px 8px 0 0;
+    margin-right: 10px;
+    width: 30%;
+    height: 40px;
+    margin-bottom: 0;
+    &.active {
+        background: $grey__light;
+        box-shadow: inset $teal 0 2px 0 0, inset $teal -2px 0 0 0,
+            inset $teal 2px 0 0 0;
+        z-index: 3;
+    }
+    &:focus {
+        outline: none;
+        border-color: $teal;
+    }
+}
+
+.tabs__content {
+    border-bottom: 2px solid $teal;
+}
+
+.tabs__item {
+    padding: 20px 0 0;
+    display: none;
+    &.active {
+        display: block;
+    }
+}

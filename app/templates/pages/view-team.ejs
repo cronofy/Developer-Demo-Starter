@@ -1,0 +1,48 @@
+<%- include('../modules/header', {page_title: "View team's availability", active: "/settings"}); %>
+
+<div class="page__wrapper">
+
+    <div class="block">
+        <a href="/settings">Back to Settings</a>
+    </div>
+    
+    <div class="block block--border block--ats-header">
+        <%- include('../icons/clipboard', {className: 'ats__icon'}); %>
+        <div class="ats__title">
+            <h1 class="ats__title-heading">View team's availability</h1>
+            <div class="ats__meta">
+                <span class="ats__meta-value">Select a team member to view their working hours.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <label for="location" class="subheading subheading--inline">Select team member:</label>
+        <div class="block__content check__container js--team-radios">
+            
+            <div class="check__wrapper">
+                <div class="check">
+                    <input type="radio" class="check__input js--ats-availability" id="availability__all" name="availability" value="all" checked>
+                    <label for="availability__all" class="check__label--sym"></label>
+                </div>
+                <label for="availability__all" class="check__label--visible">Team member's name</label>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="block">
+        <div id="cronofy-team-availability"></div>
+    </div>
+
+</div>
+
+<script>
+    const TOKEN = "<%= token %>";
+    const API_DOMAIN = "<%= api_domain %>";
+    const TEAM = <%- JSON.stringify(team) %>;
+    const SUB = "<%= sub %>";
+</script>
+<script src="/assets/team.js"></script>
+
+<%- include('../modules/footer'); %>

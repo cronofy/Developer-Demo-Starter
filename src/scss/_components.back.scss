@@ -1,0 +1,26 @@
+.back__link {
+    display: flex;
+    align-items: center;
+}
+
+.back__icon {
+    width: 20px;
+    height: 20px;
+    fill: $teal;
+    margin-right: 6px;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.back__text {
+    line-height: 1;
+    display: block;
+    padding-top: 4px;
+}
+
+.back__link:hover {
+    // text-decoration: none;
+    .back__icon {
+        transform: translateX(-4px);
+    }
+}

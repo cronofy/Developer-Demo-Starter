@@ -1,0 +1,34 @@
+.view-calendars__wrapper {
+    border: 1px solid $grey__tint;
+}
+
+.view-calendars {
+    margin-bottom: 0 !important;
+
+    .view-calendars__profile {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .view-calendars__title {
+        display: none;
+    }
+
+    .view-calendars__profiles {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .view-calendars__footer {
+        display: none;
+    }
+}
+
+.first-rules {
+    .first-rules__calendars {
+        display: none;
+    }
+    .first-rules__legend-item {
+        align-items: center;
+    }
+}

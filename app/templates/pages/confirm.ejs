@@ -1,0 +1,40 @@
+<%- include('../modules/header-confirm', {page_title: "Confirm"}); %>
+
+<div class="page__wrapper">
+    
+    <h1 class="page__title">Choose your interview slot</h1>
+
+    <div class="element__wrapper">
+        <p>Pick a day and time that works for you</p>
+        <div id="cronofy-slot-picker"></div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+<script>
+
+    function interviewSubmit(res) {
+        if (res.notification.type !== "slot_selected") return;
+        const slot = JSON.stringify(res.notification.slot);
+        const title = "Interview confirmed";
+        const name = "Nitithorn Prinya";
+        // const location = interviewState.type !== "remote" ? "Evenitron HQ" : false;
+        const type = "interview-confirm";
+        const redirectQuery = `type=${type}&slot=${slot}&title=${title}&name=${name}&location=${false}`;
+        window.location.href = `/email?${redirectQuery}`;
+    }
+
+    CronofyElements.SlotPicker({
+        element_token: "<%= token %>",
+        target_id: 'cronofy-slot-picker',
+        api_domain:"<%= api_domain %>",
+        availability_query: <%- JSON.stringify({ ...JSON.parse(query), max_results: 200 }) %>,
+        styles: {
+            prefix: "SP1"
+        },
+        callback: slot => interviewSubmit(slot),
+    });
+</script>
+
+<%- include('../modules/footer'); %>

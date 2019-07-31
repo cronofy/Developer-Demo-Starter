@@ -1,0 +1,87 @@
+.check__container {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+}
+
+.check__wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+}
+
+// The visible checkbox
+.check {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-right: 10px;
+    float: left;
+    flex-grow: 0;
+    flex-shrink: 0;
+    .check__label--sym {
+        background: $white;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        border: 1px solid $grey__tint;
+        cursor: pointer;
+        border-radius: 50%;
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.1s;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            background: $teal;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        display: none;
+        &:checked + label {
+            &:before,
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.check__label--visible {
+    margin: 0;
+    line-height: 1.5;
+    float: left;
+    padding: 0.1em 0.3em;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.check input[type="radio"]:checked + .check__label--visible {
+    color: $red;
+}
+
+.check__input--extra {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    width: 50px;
+    margin-left: 10px;
+}
+
+.check__wrapper--inline {
+    .check__label--visible {
+        display: flex;
+        align-items: center;
+    }
+    margin-bottom: 10px;
+    margin-right: 10px;
+}

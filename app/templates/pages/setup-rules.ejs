@@ -1,0 +1,55 @@
+<%- include('../modules/header-wizard', {page_title: "Set a rule"}); %>
+
+<div class="page__wrapper">
+
+    <%- include('../modules/wizard-progress', {total: 3, current: 3}); %>
+    
+    <h2 class="subheading subheading--inline">These are the calendars you have connected</h2>
+    
+    <div class="block view-calendars__wrapper" id="cronofy-calendar-sync"></div>
+
+    <h2 class="subheading subheading--inline">Now set your working hours</h2>
+
+    <p>Select the periods when you want to appear available</p>
+    
+    <div class="block" id="cronofy-availability-rules"></div>
+
+</div>
+
+<script>
+
+    CronofyElements.CalendarSync({
+        element_token: "<%= token %>",
+        target_id: 'cronofy-calendar-sync',
+        api_domain:"https://api.cronofy.com",
+        authorization: {
+            redirect_uri: "<%= url %>/setup-02/",
+            client_id: "<%= client_id %>",
+            scope: "read_write"
+        },
+        styles: {
+            prefix: "view-calendars"
+        }
+    });
+
+    CronofyElements.AvailabilityRules({
+        element_token: "<%= token %>",
+        target_id: 'cronofy-availability-rules',
+        api_domain:"<%= api_domain %>",
+        availability_rule_id: "team_work_hours",
+        tzid: "<%= timezone %>",
+        config: {
+            start_time:"08:00",
+            end_time: "18:00",
+            duration: 15
+        },
+        styles: {
+            prefix: "first-rules",
+        },
+        callback: saved => {
+            window.location.href = `/?finished=true`;
+        }
+    });
+</script>
+
+<%- include('../modules/footer'); %>

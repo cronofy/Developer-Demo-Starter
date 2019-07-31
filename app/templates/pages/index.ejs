@@ -1,0 +1,43 @@
+<%- include('../modules/header-home', {page_title: 'Home', active: "/"}); %>
+
+<div class="page__wrapper">
+    
+    <div class="block block--border block--ats-header">
+        <%- include('../icons/cronofy', {className: 'ats__icon'}); %>
+        <div class="ats__title">
+            <h1 class="ats__title-heading">Cronofy Demo App</h1>
+            <div class="ats__meta">
+                <span class="ats__meta-value">See our <a href="https://docs.cronofy.com/developers/api/">API</a> and <a href="https://docs.cronofy.com/developers/ui-elements/">UI Elements</a> in action.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="block block--grid">
+        
+        <div class="person person--third">
+            <div class="person__meta">
+                <h3 class="person__name">Meetings</h3>
+                <span class="person__meta-item">View your direct reports, and schedule meetings with them</span>
+            </div>
+            <a href="/meetings" class="button button--centered">Book a meeting</a>
+        </div>
+        
+        <div class="person person--third">
+            <div class="person__meta">
+                <h3 class="person__name">ATS</h3>
+                <span class="person__meta-item">Use the Cronofy ATS to manage upcoming interviews</span>
+            </div>
+            <a href="/ats" class="button button--centered">Schedule interviews</a>
+        </div>
+
+        <div class="person person--third">
+            <div class="person__meta">
+                <h3 class="person__name">Settings</h3>
+                <span class="person__meta-item">Connect calendar profiles and define your working hours</span>
+            </div>
+            <a href="/settings" class="button button--centered">Edit settings</a>
+        </div>
+
+</div>
+
+<%- include('../modules/footer'); %>

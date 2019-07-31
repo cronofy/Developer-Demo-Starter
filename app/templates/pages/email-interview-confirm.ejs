@@ -1,0 +1,14 @@
+<%- include('../modules/email-header', { page_title: "Cronofy email: schedule your interview", from, subject }); %>
+    <p>Hi Nitithorn Prinya,</p>
+    <p>Thank you for your application to the role of <strong>Project Manager</strong>. The hiring manager at Evenitron would like to invite you to an interview.</p>
+    <p>The details of your interview are:</p>
+    <p><strong>Event description:</strong> Interview</p>
+    <% if (location && location !== 'false') { %>
+        <p><strong>Location:</strong> <%= location %></p>
+    <% } %>
+    <p><strong>Date:</strong> <%= meetingDate %></p>
+    <p><strong>Time:</strong> <%= start %> - <%= end %></p>
+    <p>Thank you for your interest in this role. We look forward to meeting you.</p>
+    <p>Regards,</p>
+    <p>The Evenitron hiring team.</p>
+<%- include('../modules/email-footer', {}); %>

@@ -1,0 +1,67 @@
+.person {
+    background: $white;
+    border: 1px solid $grey__tint;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+}
+
+.person--wide {
+    flex-direction: row;
+    justify-content: stretch;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.person__avatar {
+    background-color: $grey__dark;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.person--wide .person__avatar {
+    margin-right: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.person__name {
+    margin-top: 4px;
+    font-size: 22px;
+    line-height: 40px;
+    font-weight: normal;
+}
+
+.person__subheading {
+    font-size: 18px;
+}
+
+.person__meta {
+    text-align: center;
+    margin: 4px 0 16px;
+    flex-grow: 1;
+}
+
+.person--wide .person__meta {
+    text-align: left;
+}
+
+.person__meta-item {
+    margin-top: 6px;
+    display: block;
+    font-size: 16px;
+    color: $grey__dark;
+}
+
+.person--third {
+    min-height: 260px;
+}

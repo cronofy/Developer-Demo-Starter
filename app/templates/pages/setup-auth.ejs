@@ -1,0 +1,37 @@
+<%- include('../modules/header-wizard', {page_title: "Connect your calendar"}); %>
+
+<div class="page__wrapper">
+    <%- include('../modules/wizard-progress', {total: 3, current: 2}); %>
+
+    <div class="element__wrapper">
+        <h1 class="page__title">Connect your calendar</h1>
+        <div id="cronofy-calendar-sync"></div>
+    </div>
+
+</div>
+
+<script>
+    const options = {
+        target_id: 'cronofy-calendar-sync',
+        api_domain:"https://api.cronofy.com",
+        authorization: {
+            redirect_uri: "<%= url %>/setup-auth/",
+            client_id: "<%= client_id %>",
+            scope: "read_write"
+        },
+        styles: {
+            prefix: "wizard-1"
+        },
+        callback: cb => {
+            console.log("callback", cb);
+        }
+    };
+
+    <% if (token) { %>
+    options.element_token = "<%= token %>";
+    <% } %>
+
+    CronofyElements.CalendarSync(options);
+</script>
+
+<%- include('../modules/footer'); %>

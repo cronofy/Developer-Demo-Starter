@@ -1,0 +1,37 @@
+<%- include('../modules/header', {page_title: 'Settings', active: "/settings"}); %>
+
+<div class="page__wrapper">
+    
+    <div class="block block--border block--ats-header">
+        <%- include('../icons/clipboard', {className: 'ats__icon'}); %>
+        <div class="ats__title">
+            <h1 class="ats__title-heading">Settings</h1>
+            <div class="ats__meta">
+                <span class="ats__meta-value">Connect calendar profiles, and set your working hours.</span>
+            </div>
+        </div>
+    </div>
+    
+    <a href="/team" class="link--secondary">View team members' individual availability<%- include('../icons/back', {className: 'link--secondary__icon'}); %></a>
+    
+    <div class="block">
+        <div class="element__wrapper">
+            <div id="cronofy-calendar-sync"></div>
+        </div>
+    </div>
+    
+    <div class="block">
+        <div id="cronofy-availability-rules"></div>
+    </div>
+
+</div>
+
+<script>
+    const TOKEN = "<%= token %>";
+    const API_DOMAIN = "<%= api_domain %>";
+    const CLIENT_ID = "<%= client_id %>";
+    const APP_URL = "<%= url %>";
+</script>
+<script src="/assets/settings.js"></script>
+
+<%- include('../modules/footer'); %>

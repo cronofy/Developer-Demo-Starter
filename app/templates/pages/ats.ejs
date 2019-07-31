@@ -1,0 +1,199 @@
+<%- include('../modules/header', {page_title: 'ATS', active: "/ats"}); %>
+
+<div class="page__wrapper">
+    
+    <div class="block block--border block--ats-header">
+        <%- include('../icons/clipboard', {className: 'ats__icon'}); %>
+        <div class="ats__title">
+            <h1 class="ats__title-heading">Project Manager</h1>
+            <div class="ats__meta">
+                <span class="ats__meta-label">Candidate</span>
+                <span class="ats__meta-value">Nitithorn Prinya</span>
+            </div>
+        </div>
+        <div class="ats__meta">
+            <span class="ats__meta-label">Location</span>
+            <span class="ats__meta-value">London HQ</span>
+        </div>
+        <div class="ats__meta">
+            <span class="ats__meta-label">Status</span>
+            <span class="ats__meta-value">Active</span>
+        </div>
+        <div class="ats__meta">
+            <span class="ats__meta-label">Due</span>
+            <span class="ats__meta-value">12-Aug-2019</span>
+        </div>
+    </div>
+    
+    <div class="block block--columns">
+        <div class="block__label">
+            <h2 class="subheading">Hiring team:</h2>
+        </div>
+        <div class="block__content multiselect__container">
+            <div class="multiselect__wrapper js--multiselect--ats">
+                <div class="multiselect__item">
+                    <div class="multiselect__avatar" style="background-image:url('/assets/images/avatar_10.jpg');"></div>
+                    <div class="multiselect__title">Tokunaga Yae</div>
+                </div>
+            </div>
+            <div class="multiselect__toggler js--multiselect__toggler-wrapper--ats">
+                <div class="multiselect__toggler-inner js--multiselect__toggler--ats"></div>
+                <button class="multiselect__toggler-button js--multiselect__toggler-button--ats"><%- include('../icons/close', {className: 'button__icon'}); %></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="block block--columns">
+        <div class="block__label">
+            <label for="location" class="subheading">Required team members:</label>
+        </div>
+        <div class="block__content check__container">
+            
+            <div class="check__wrapper">
+                <div class="check">
+                    <input type="radio" class="check__input js--ats-availability" id="availability__all" name="availability" value="all" checked>
+                    <label for="availability__all" class="check__label--sym"></label>
+                </div>
+                <label for="availability__all" class="check__label--visible">All</label>
+            </div>
+            
+            <div class="check__wrapper">
+                <div class="check">
+                    <input type="radio" class="check__input js--ats-availability" id="availability__any" name="availability" value="any">
+                    <label for="availability__any" class="check__label--sym"></label>
+                </div>
+                <label for="availability__any" class="check__label--visible">Any</label>
+            </div>
+
+            <span class="helper-text">How many members of the hiring team need to be present at the interview?</span>
+            
+        </div>
+    </div>
+
+    <div class="block block--columns">
+        <div class="block__label">
+            <h2 class="subheading">Interview type:</h2>
+        </div>
+        <div class="block__content block--radio">
+            
+            <div class="radio-group radio-group--half">
+                <input type="radio" class="js--interview-type" value="remote" id="interview-type__remote" name="interview-type" checked/>
+                <label for="interview-type__remote" class="symLabel">
+                    <%- include('../icons/remote', {className: 'radio__icon'}); %>
+                    <h3 class="radio__title">Remote</h3>
+                    <span class="radio__description">30min call or video</span>
+                </label>
+            </div>
+            
+            <div class="radio-group radio-group--half">
+                <input type="radio" class="js--interview-type" value="facetoface" id="interview-type__facetoface" name="interview-type"/>
+                <label for="interview-type__facetoface" class="symLabel">
+                    <%- include('../icons/meeting', {className: 'radio__icon'}); %>
+                    <h3 class="radio__title">Face to face</h3>
+                    <span class="radio__description">60min meeting</span>
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="block tabs__wrapper js--tabs__wrapper">
+        <div class="tabs__controls">
+            <button class="tabs__control js--tabs__control active" data-tab="1">Single candidate</button>
+            <button class="tabs__control js--tabs__control" data-tab="2">Bulk candidates</button>
+        </div>
+        <div class="tabs__content js--tabs__content">
+            <div class="tabs__item js--tabs__item active" data-tab="1">
+                
+                <div class="block block--columns">
+                    <button class="button button--third button--has-icon js--self-schedule">
+                        <span class="button__text">Invite candidate</span>
+                        <%- include('../icons/share', {className: 'button__icon'}); %>
+                    </button>
+                    <span class="helper-text helper-text--third">Send a self-scheduling link to Nitithorn Prinya</span>
+                    <div class="spacer--third"></div>
+                </div>
+
+                <div class="block">
+                    <div id="cronofy-ats-availability"></div>
+                </div>
+            
+            </div>
+            <div class="tabs__item js--tabs__item active" data-tab="2">
+
+                <div class="block candidates">
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate_default" name="availability" value="candidate_default" checked>
+                            <label for="selected__candidate_default" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate_default" class="candidates__candidate-label check__label--visible">Nitithorn Prinya</label>
+                    </div>
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate00" name="availability" value="candidate00" >
+                            <label for="selected__candidate00" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate00" class="candidates__candidate-label check__label--visible">Leon Eckman</label>
+                    </div>
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate01" name="availability" value="candidate01" >
+                            <label for="selected__candidate01" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate01" class="candidates__candidate-label check__label--visible">Siu Cordeiro</label>
+                    </div>
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate02" name="availability" value="candidate02" >
+                            <label for="selected__candidate02" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate02" class="candidates__candidate-label check__label--visible">Merry Goodlow</label>
+                    </div>
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate03" name="availability" value="candidate03" >
+                            <label for="selected__candidate03" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate03" class="candidates__candidate-label check__label--visible">Ping Vanvalkenburg</label>
+                    </div>
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate04" name="availability" value="candidate04" >
+                            <label for="selected__candidate04" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate04" class="candidates__candidate-label check__label--visible">Blanche Jacquez</label>
+                    </div>
+                    <div class="candidates__candidate check__wrapper">
+                        <div class="check">
+                            <input type="checkbox" class="check__input js--candidate" id="selected__candidate05" name="availability" value="candidate05" >
+                            <label for="selected__candidate05" class="check__label--sym" ></label>
+                        </div>
+                        <label for="selected__candidate05" class="candidates__candidate-label check__label--visible">Imelda Bazaldua</label>
+                    </div>
+                </div>
+                
+                <div class="block block--columns">
+                    <button type="submit" class="button button--third button--has-icon js--self-schedule">
+                        <span class="button__text">Bulk invite</span>
+                        <%- include('../icons/list-add', {className: 'button__icon'}); %>
+                    </button>
+                    <span class="helper-text helper-text--third">Send a self-scheduling link to multiple candidates</span>
+                    <div class="spacer--third"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const SUB = "<%= sub %>";
+    const TOKEN = "<%= token %>";
+    const API_DOMAIN = "<%= api_domain %>";
+    const TEAM = <%- JSON.stringify(team) %>;
+</script>
+<script src="/assets/ats.js"></script>
+
+<%- include('../modules/footer'); %>

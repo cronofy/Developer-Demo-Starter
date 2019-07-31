@@ -1,0 +1,23 @@
+<nav class="nav__wrapper">
+    <a class="nav__link <% if (active === '/') { %>nav__link--active<% } %>" href="/" >
+        <span class="nav__link-text">Home</span>
+        <span class="nav__link-icon"></span>
+    </a>
+    <a class="nav__link <% if (active === '/meetings') { %>nav__link--active<% } %>" href="/meetings" >
+        <span class="nav__link-text">Meetings</span>
+        <span class="nav__link-icon"></span>
+    </a>
+    <a class="nav__link <% if (active === '/ats') { %>nav__link--active<% } %>" href="/ats" >
+        <span class="nav__link-text">ATS</span>
+        <span class="nav__link-icon"></span>
+    </a>
+    <a class="nav__link <% if (active === '/settings') { %>nav__link--active<% } %>" href="/settings" >
+        <span class="nav__link-text">Settings</span>
+        <span class="nav__link-icon"></span>
+    </a>
+    <hr class="nav__divider"/>
+    <a class="nav__link" href="/setup-start" >
+        <span class="nav__link-text">Reset</span>
+        <span class="nav__link-icon"></span>
+    </a>
+</nav>

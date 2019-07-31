@@ -1,0 +1,60 @@
+.nav__wrapper {
+    background: $brand_blue;
+    padding: 40px 10px;
+}
+
+.nav__link {
+    color: $white;
+    display: block;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.nav__link-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $white;
+    margin: 10px auto 0;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.nav__link:hover {
+    text-decoration: none;
+    .nav__link-icon {
+        background: $brand_blue_dark;
+    }
+    &.nav__link--active .nav__link-icon {
+        background: $white;
+    }
+}
+
+.nav__link--active .nav__link-icon {
+    box-shadow: inset $brand_blue 0 0 0 4px;
+    background: $white;
+}
+
+// ---
+
+.basic-nav__link {
+    margin: 0 0 10px 10px;
+}
+
+.basic-nav__link--active {
+    background: $aside_bg;
+    color: $brand_blue;
+    border: 2px solid $brand_blue;
+    cursor: default;
+    &:hover {
+        background: $aside_bg;
+    }
+}
+
+.nav__divider {
+    appearance: none;
+    display: block;
+    border: none;
+    border-top: 1px solid $white;
+    margin-bottom: 30px;
+}

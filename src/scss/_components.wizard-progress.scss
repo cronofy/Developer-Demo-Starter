@@ -1,0 +1,34 @@
+.wrapper__outer--has-wizard {
+    padding-top: 100px;
+}
+
+.wizard-progress {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $teal;
+    z-index: 4;
+}
+
+.wizard-progress__item {
+    display: block;
+    text-align: center;
+    height: 34px;
+    width: 36px;
+    border-radius: 50%;
+    color: $white;
+    border: 3px solid $white;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+    margin: 0 6px;
+}
+
+.wizard-progress__item--current {
+    background: $white;
+    color: $teal;
+}

@@ -1,0 +1,117 @@
+.multiselect__container {
+    position: relative;
+}
+
+.multiselect__wrapper {
+    background: $white;
+    border: 1px solid $grey__tint;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 6px 6px 0 6px;
+    border-radius: 8px;
+    min-height: 46px;
+    cursor: pointer;
+}
+
+.multiselect__item {
+    display: flex;
+    flex-grow: 0;
+    background: $teal;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-right: 10px;
+    margin-bottom: 6px;
+    align-items: center;
+}
+
+.multiselect__avatar {
+    width: 26px;
+    height: 26px;
+    background: $black;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.multiselect__title {
+    color: $white;
+}
+
+.multiselect__icon {
+    margin-left: 10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    fill: $teal__dark;
+}
+
+.multiselect__action {
+    display: flex;
+    flex-grow: 0;
+    border-radius: 4px;
+    border: 1px solid $teal;
+    padding: 4px 10px;
+    margin-right: 10px;
+    align-items: center;
+    .multiselect__icon {
+        fill: $teal;
+        margin-left: 0;
+    }
+}
+
+.multiselect__toggler {
+    display: none;
+    border: 1px solid $grey__tint;
+    min-width: 400px;
+    // border-bottom: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+    background: $white;
+    box-shadow: rgba($black, 0.6) 0 2px 6px 0;
+    &.active {
+        display: block;
+    }
+}
+
+.multiselect__toggle {
+    display: flex;
+    flex-grow: 0;
+    padding: 10px;
+    color: $black;
+    align-items: center;
+    &:nth-of-type(2n) {
+        background: $grey__light;
+    }
+    .check__wrapper {
+        width: 100%;
+        margin-right: 0;
+        justify-content: stretch;
+    }
+}
+
+.multiselect__toggler-button {
+    @extend .button;
+    border-radius: 0;
+    // background: $teal;
+    // color: $white;
+    // display: block;
+    width: 100%;
+    font-size: 18px;
+    // fopnt
+    .button__icon {
+        width: 12px;
+        height: 12px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.multiselect__toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-grow: 1;
+}

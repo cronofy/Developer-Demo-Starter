@@ -1,0 +1,44 @@
+.notice--wizard-complete {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    position: relative;
+    // top: 0;
+    // left: 0;
+    width: 100%;
+    background: $green;
+    z-index: 4;
+    font-weight: bold;
+    color: $white;
+    &.hidden {
+        display: none;
+    }
+}
+
+.notice__message {
+    font-weight: normal;
+}
+
+.notice__clear {
+    @extend %buttonReset;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: 1px solid $white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.notice__clear-icon {
+    width: 10px;
+    height: 10px;
+    display: block;
+    fill: $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

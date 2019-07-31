@@ -1,0 +1,131 @@
+body {
+    font-family: $text;
+    background: $grey__light;
+    color: $black;
+    position: relative;
+}
+
+a {
+    color: $teal;
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+
+.subheading {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.subheading--inline {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 22px;
+    line-height: 36px;
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
+}
+
+.nav-link,
+.button {
+    @extend %buttonReset;
+    transition: background 0.2s, color 0.2s;
+    font-family: $text;
+    font-size: 16px;
+    padding: 10px 40px 10px;
+    border-radius: 4px;
+    background: $teal;
+    color: $white;
+    cursor: pointer;
+    &:hover {
+        background: $teal__dark;
+    }
+}
+.button--link:hover,
+a.button:hover {
+    text-decoration: none;
+}
+
+.button--has-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__icon {
+    width: 28px;
+    height: 28px;
+    fill: $white;
+    display: block;
+    margin-left: 6px;
+}
+
+.button--outline {
+    background: none;
+    // border: 4px solid $teal;
+    box-shadow: inset $teal 0 0 0 4px;
+    color: $teal;
+    .button__icon {
+        fill: $teal;
+    }
+}
+
+.button--wide {
+    width: 100%;
+}
+
+.element__wrapper {
+    background: $white;
+    border: 1px solid $grey__tint;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 20px 0;
+}
+
+.element__wrapper--inline {
+    background: $white;
+    margin-bottom: 20px;
+}
+
+.page-footer {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.link--secondary {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    color: $grey__dark;
+}
+.link--secondary__icon {
+    display: block;
+    padding-right: 6px;
+    width: 16px;
+    height: 16px;
+    fill: $grey__dark;
+    transform: rotate(180deg);
+}
