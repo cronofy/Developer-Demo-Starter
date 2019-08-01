@@ -18,11 +18,10 @@ module.exports = (app, options) => {
                         client_secret: process.env.CLIENT_SECRET,
                         grant_type: "authorization_code",
                         code: codeQuery,
-                        redirect_uri: `${options.url}/settings`
+                        redirect_uri: `${options.url}/`
                     })
                 }
             );
-            return res.redirect("/settings");
         }
 
         const token = await connections

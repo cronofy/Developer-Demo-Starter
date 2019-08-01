@@ -1,18 +1,20 @@
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-CronofyElements.CalendarSync({
+const calendarSyncOptions = {
     element_token: TOKEN,
     target_id: "cronofy-calendar-sync",
     api_domain: API_DOMAIN,
     authorization: {
-        redirect_uri: `${APP_URL}/settings`,
+        redirect_uri: `${APP_URL}/`,
         client_id: CLIENT_ID,
         scope: "read_write"
     },
     callback: cb => {
         console.log("callback", cb);
     }
-});
+};
+console.log(calendarSyncOptions);
+CronofyElements.CalendarSync(calendarSyncOptions);
 
 CronofyElements.AvailabilityRules({
     element_token: TOKEN,
