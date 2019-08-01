@@ -13,14 +13,13 @@ const calendarSyncOptions = {
         console.log("callback", cb);
     }
 };
-console.log(calendarSyncOptions);
 CronofyElements.CalendarSync(calendarSyncOptions);
 
-CronofyElements.AvailabilityRules({
+const availabilityRulesOptions = {
     element_token: TOKEN,
     target_id: "cronofy-availability-rules",
     api_domain: API_DOMAIN,
-    availability_rule_id: "team_work_hours",
+    availability_rule_id: "work_hours",
     tzid: timezone,
     config: {
         start_time: "08:00",
@@ -30,4 +29,5 @@ CronofyElements.AvailabilityRules({
     styles: {
         prefix: "AR1"
     }
-});
+};
+CronofyElements.AvailabilityRules(availabilityRulesOptions);

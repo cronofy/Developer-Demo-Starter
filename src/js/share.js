@@ -1,6 +1,6 @@
 import { offsetTime } from "./utils";
 
-function interviewSubmit(res) {
+const interviewSubmit = res => {
     console.log(res);
     // if (res.notification.type !== "slot_selected") return;
     // const slot = JSON.stringify(res.notification.slot);
@@ -10,7 +10,7 @@ function interviewSubmit(res) {
     // const type = "interview-confirm";
     // const redirectQuery = `type=${type}&slot=${slot}&title=${title}&name=${name}&location=${false}`;
     // window.location.href = `/email?${redirectQuery}`;
-}
+};
 
 const availabilityQuery = {
     participants: [
@@ -42,7 +42,7 @@ const availabilityQuery = {
     ]
 };
 
-CronofyElements.SlotPicker({
+const slotPickerOptions = {
     element_token: TOKEN,
     target_id: "cronofy-slot-picker",
     api_domain: API_DOMAIN,
@@ -51,4 +51,6 @@ CronofyElements.SlotPicker({
         prefix: "SP1"
     },
     callback: slot => interviewSubmit(slot)
-});
+};
+
+CronofyElements.SlotPicker(slotPickerOptions);
