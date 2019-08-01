@@ -25,7 +25,7 @@ const availabilityQuery = {
             ]
         }
     ],
-    required_duration: { minutes: 30 },
+    required_duration: { minutes: 60 },
     available_periods: [
         { start: offsetTime(1, "08:00"), end: offsetTime(1, "18:00") },
         { start: offsetTime(2, "08:00"), end: offsetTime(2, "18:00") },
@@ -42,15 +42,20 @@ const availabilityQuery = {
     ]
 };
 
-const slotPickerOptions = {
+const availabilityViewerOptions = {
     element_token: TOKEN,
-    target_id: "cronofy-slot-picker",
+    target_id: "cronofy-availability-viewer",
     api_domain: API_DOMAIN,
     availability_query: availabilityQuery,
     styles: {
-        prefix: "SP1"
+        prefix: "AV1"
+    },
+    config: {
+        start_time: "09:00",
+        end_time: "17:00",
+        interval: 30
     },
     callback: slot => interviewSubmit(slot)
 };
 
-CronofyElements.SlotPicker(slotPickerOptions);
+CronofyElements.AvailabilityViewer(availabilityViewerOptions);
