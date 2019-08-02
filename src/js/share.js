@@ -2,14 +2,9 @@ import { offsetTime } from "./utils";
 
 const interviewSubmit = res => {
     console.log(res);
-    // if (res.notification.type !== "slot_selected") return;
-    // const slot = JSON.stringify(res.notification.slot);
-    // const title = "Interview confirmed";
-    // const name = "Nitithorn Prinya";
-    // // const location = interviewState.type !== "remote" ? "Evenitron HQ" : false;
-    // const type = "interview-confirm";
-    // const redirectQuery = `type=${type}&slot=${slot}&title=${title}&name=${name}&location=${false}`;
-    // window.location.href = `/email?${redirectQuery}`;
+    if (res.notification.type !== "slot_selected") return;
+    const slot = JSON.stringify(res.notification.slot);
+    window.location.href = `/submit?slot=${slot}`;
 };
 
 const availabilityQuery = {

@@ -2,6 +2,8 @@ const connections = require("../connections");
 
 module.exports = (app, options) => {
     app.get("/", async (req, res) => {
+        const session = req.session;
+
         const codeQuery = req.query.code;
 
         if (codeQuery) {
@@ -22,6 +24,7 @@ module.exports = (app, options) => {
                     })
                 }
             );
+            session.access_token = codeResponse.access_token;
         }
 
         const token = await connections
@@ -48,9 +51,6 @@ module.exports = (app, options) => {
                 return { error: error };
             });
 
-        if (token.error) {
-            return res.redirect("/setup-auth");
-        }
         return res.render("pages/settings", {
             token: token.element_token.token,
             api_domain: options.apiDomain,

@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 const enforce = require("express-sslify");
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("cookie-session");
 
 dotenv.config();
 
@@ -14,6 +15,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/"));
 app.set("view engine", "ejs");
 app.set("views", process.cwd() + "/app/templates");
+app.use(
+    session({
+        name: "developer_demo",
+        secret: "9U5AJIasFaaadz"
+    })
+);
 if (process.env.MODE !== "development") {
     app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
@@ -27,6 +34,7 @@ const options = {
 // Routes
 require("./routes/home")(app, options);
 require("./routes/share")(app, options);
+require("./routes/submit")(app, options);
 
 app.listen(PORT);
 console.log(`serving on ${URL}`);
