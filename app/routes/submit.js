@@ -1,6 +1,5 @@
 const Cronofy = require("cronofy");
 const moment = require("moment");
-const connections = require("../connections");
 
 module.exports = (app, options) => {
     app.get("/submit", async (req, res) => {
@@ -9,8 +8,6 @@ module.exports = (app, options) => {
         if (!req.query.slot) {
             return res.redirect("/");
         }
-
-        console.log("session", session);
 
         if (!session.access_token) {
             return res.redirect("/");
@@ -24,16 +21,11 @@ module.exports = (app, options) => {
 
         const slot = JSON.parse(req.query.slot);
 
-        const userInfo = await connections.getInfo(
-            options.apiDomain,
-            session.access_token
-        );
+        const userInfo = await cronofyClient.userInfo();
 
         const calendarId =
             userInfo["cronofy.data"].profiles[0].profile_calendars[0]
                 .calendar_id;
-
-        console.log("calendarId", calendarId);
 
         cronofyClient.createEvent({
             calendar_id: calendarId,

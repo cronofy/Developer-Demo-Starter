@@ -33,7 +33,7 @@ const options = {
 
 // Routes
 require("./routes/home")(app, options);
-require("./routes/share")(app, options);
+require("./routes/availability")(app, options);
 require("./routes/submit")(app, options);
 
 app.listen(PORT);
