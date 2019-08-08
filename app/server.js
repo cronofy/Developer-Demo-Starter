@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/"));
 const cronofyClient = new Cronofy({
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
-    access_token: process.env.access_token
+    access_token: process.env.ACCESS_TOKEN
 });
 
 // Route: home
@@ -34,9 +34,8 @@ app.get("/", async (req, res) => {
             client_secret: process.env.CLIENT_SECRET,
             grant_type: "authorization_code",
             code: codeQuery,
-            redirect_uri: "http://localhost:7070"
+            redirect_uri: "http://localhost:7070/"
         });
-        session.access_token = codeResponse.access_token;
     }
 
     const token = await cronofyClient.requestElementToken({
