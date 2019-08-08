@@ -1,3 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Availability: Cronofy Developer Demo</title>
+
+    <link href="/app.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper__outer">
+        <div class="wrapper__inner">
+
+            <div class="page__wrapper">
+
+                <a href="/" class="link--secondary">Back to homepage</a>
+                
+                <div class="block">
+                    <h1 class="ats__title-heading">Book an event</h1>
+                    <div class="ats__meta">
+                        <span class="ats__meta-value">Pick a day and time that works for you</span>
+                    </div>
+                </div>
+                
+                <div class="element__wrapper">
+                    <div id="cronofy-availability-viewer"></div>
+                </div>
+
+            </div>
+
+            <script src="https://elements.cronofy.com/js/CronofyElements.v1.2.3.js"></script>
+            <script>
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const yyyy = today.getFullYear();
+
+                const interviewSubmit = res => {
+                    if (res.notification.type !== "slot_selected") return;
+                    const slot = JSON.stringify(res.notification.slot);
+                    window.location.href = `/submit?slot=${slot}`;
+                };
+
+                const availabilityQuery = {
+                    participants: [
+                        {
+                            required: "all",
+                            members: [
+                                {
+                                    sub: "<%= sub %>",
+                                    managed_availability: true,
+                                    availability_rule_ids: ["work_hours"]
+                                }
+                            ]
+                        }
+                    ],
+                    required_duration: { minutes: 60 },
+                    available_periods: [
+                        { start: `${yyyy}-${mm}-${parseInt(dd) + 1}T09:00:00Z`, end: `${yyyy}-${mm}-${parseInt(dd) + 1}T18:00:00Z` },
+                        { start: `${yyyy}-${mm}-${parseInt(dd) + 2}T09:00:00Z`, end: `${yyyy}-${mm}-${parseInt(dd) + 2}T18:00:00Z` }
+                    ]
+                };
+
+                const availabilityViewerOptions = {
+                    element_token: "<%= token %>",
+                    target_id: "cronofy-availability-viewer",
+                    availability_query: availabilityQuery,
+                    callback: slot => interviewSubmit(slot)
+                };
+
+                CronofyElements.AvailabilityViewer(availabilityViewerOptions);
+            </script>
+
         </div>
         <footer class="footer">
             <svg class='footer__logo' viewBox="0 0 23 23">
@@ -11,6 +85,5 @@
             <span class="footer__credit">Powered by <a href="https://www.cronofy.com/">Cronofy</a></span>
         </footer>
     </div>
-    <script src="/assets/app.js"></script>
 </body>
 </html>
