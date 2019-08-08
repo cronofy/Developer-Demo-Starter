@@ -1,35 +1,13 @@
-// SETTINGS
-@import "settings.breakpoints";
+// // SETTINGS
 @import "settings.colours";
-@import "settings.typography";
 
-// TOOLS
-@import "tools.mixins";
-@import "tools.placeholders";
-
-// GENERIC
+// // GENERIC
 @import "generic.reset";
 
-// BASE
-@import "base.forms";
+// // BASE
 @import "base.general";
-@import "base.images";
 @import "base.layout";
-@import "base.selects";
-@import "base.table";
 @import "base.theme";
 
-// COMPONENTS
-@import "components.checkboxes";
+// // COMPONENTS
 @import "components.footer";
-@import "components.header";
-@import "components.page";
-@import "components.radiogroup";
-@import "components.ui-elements";
-@import "components.ui-elements.ats";
-@import "components.ui-elements.meeting";
-@import "components.ui-elements.wizard";
-
-// TRUMPS
-@import "trumps.utilities";
-@import "trumps.element-theming";

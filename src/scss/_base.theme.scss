@@ -1,5 +1,5 @@
 body {
-    font-family: $text;
+    font-family: sans-serif;
     background: $grey__light;
     color: $black;
     position: relative;
@@ -23,19 +23,17 @@ h6 {
     font-weight: bold;
 }
 
-.subheading {
-    font-size: 18px;
-    margin-bottom: 0;
-}
-
-.subheading--inline {
-    margin-bottom: 10px;
+h1,
+h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
 }
 
 p {
-    font-size: 22px;
     line-height: 36px;
     margin-bottom: 1em;
+    font-size: 18px;
+    color: $grey__dark;
 }
 
 ul {
@@ -49,11 +47,24 @@ strong {
     font-weight: bold;
 }
 
+hr {
+    margin: 2em 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $grey__tint;
+}
+
 .nav-link,
 .button {
-    @extend %buttonReset;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    display: inline-block;
+    border: none;
+    border-radius: 0;
+    margin: 0;
     transition: background 0.2s, color 0.2s;
-    font-family: $text;
     font-size: 16px;
     padding: 10px 40px 10px;
     border-radius: 4px;
@@ -128,4 +139,20 @@ a.button:hover {
     height: 16px;
     fill: $grey__dark;
     transform: rotate(180deg);
+}
+
+.meta {
+    flex-grow: 0;
+    min-width: 120px;
+}
+
+.meta-label {
+    display: block;
+    font-size: 14px;
+    color: $grey__dark;
+}
+
+.meta-value {
+    display: block;
+    font-size: 18px;
 }
