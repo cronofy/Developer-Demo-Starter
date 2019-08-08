@@ -212,6 +212,7 @@ a.button:hover {
 .button--wide {
   width: 100%; }
 
+.block--border,
 .element__wrapper {
   background: #ffffff;
   border: 1px solid #b7c4cb;
