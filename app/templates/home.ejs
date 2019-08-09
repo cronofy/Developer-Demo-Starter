@@ -31,26 +31,8 @@
 
         </div>
 
-        <script src="https://elements.cronofy.com/js/CronofyElements.v1.2.3.js"></script>
         <script>
-            CronofyElements.CalendarSync({
-                element_token: "<%= token %>",
-                target_id: "cronofy-calendar-sync",
-                authorization: {
-                    redirect_uri: "http://localhost:7070/",
-                    client_id: "<%= client_id %>",
-                    scope: "read_write"
-                }
-            });
-
-            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            
-            CronofyElements.AvailabilityRules({
-                element_token: "<%= token %>",
-                target_id: "cronofy-availability-rules",
-                availability_rule_id: "work_hours",
-                tzid: timezone
-            });
+            // Add your frontend JavaScript here
         </script>
 
         <footer class="footer">

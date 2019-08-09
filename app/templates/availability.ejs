@@ -21,50 +21,12 @@
                 <div id="cronofy-availability-viewer"></div>
             </div>
 
-            <script src="https://elements.cronofy.com/js/CronofyElements.v1.2.3.js"></script>
-            <script>
-                const today = new Date();
-                const dd = String(today.getDate()).padStart(2, '0');
-                const mm = String(today.getMonth() + 1).padStart(2, '0');
-                const yyyy = today.getFullYear();
-
-                const interviewSubmit = res => {
-                    if (res.notification.type !== "slot_selected") return;
-                    const slot = JSON.stringify(res.notification.slot);
-                    window.location.href = `/submit?slot=${slot}`;
-                };
-
-                const availabilityQuery = {
-                    participants: [
-                        {
-                            required: "all",
-                            members: [
-                                {
-                                    sub: "<%= sub %>",
-                                    managed_availability: true,
-                                    availability_rule_ids: ["work_hours"]
-                                }
-                            ]
-                        }
-                    ],
-                    required_duration: { minutes: 60 },
-                    available_periods: [
-                        { start: `${yyyy}-${mm}-${parseInt(dd) + 1}T09:00:00Z`, end: `${yyyy}-${mm}-${parseInt(dd) + 1}T18:00:00Z` },
-                        { start: `${yyyy}-${mm}-${parseInt(dd) + 2}T09:00:00Z`, end: `${yyyy}-${mm}-${parseInt(dd) + 2}T18:00:00Z` }
-                    ]
-                };
-
-                const availabilityViewerOptions = {
-                    element_token: "<%= token %>",
-                    target_id: "cronofy-availability-viewer",
-                    availability_query: availabilityQuery,
-                    callback: slot => interviewSubmit(slot)
-                };
-
-                CronofyElements.AvailabilityViewer(availabilityViewerOptions);
-            </script>
-
         </div>
+
+        <script>
+            // Add your frontend JavaScript here
+        </script>
+
         <footer class="footer">
             <svg class='footer__logo' viewBox="0 0 23 23">
                 <path d="M1.5 1.5zM17.456 9.053a9.89 9.89.0 0 1 2.426 2.553 9.897 9.897.0 0 1-2.426 2.553c-.197.842-.485 1.65-.86 2.41a11.601 11.601.0 0 0 4.144-3.34 9.592 9.592.0 0 1 .727 3.666c.02 1.253-.405 2.239-1.335 3.16-.934.917-1.935 1.336-3.206 1.316a9.974 9.974.0 0 1-3.72-.717 11.504 11.504.0 0 0 3.39-4.085c-.772.37-1.591.655-2.446.848a9.926 9.926.0 0 1-2.59 2.391 9.927 9.927.0 0 1-2.59-2.39 11.561 11.561.0 0 1-2.446-.849 11.504 11.504.0 0 0 3.39 4.085 9.974 9.974.0 0 1-3.72.717c-1.272.02-2.272-.4-3.206-1.316-.93-.921-1.356-1.907-1.336-3.16.0-1.296.26-2.534.728-3.667a11.601 11.601.0 0 0 4.144 3.341 11.193 11.193.0 0 1-.86-2.41 9.903 9.903.0 0 1-2.426-2.553 9.895 9.895.0 0 1 2.426-2.553c.197-.843.485-1.65.86-2.41a11.599 11.599.0 0 0-4.144 3.34 9.586 9.586.0 0 1-.727-3.667c-.02-1.253.405-2.238 1.335-3.159.935-.917 1.935-1.336 3.206-1.317 1.315.0 2.57.256 3.72.717a11.502 11.502.0 0 0-3.39 4.085c.771-.37 1.591-.654 2.446-.848a9.93 9.93.0 0 1 2.59-2.39 9.93 9.93.0 0 1 2.59 2.39c.855.194 1.674.479 2.446.848a11.5 11.5.0 0 0-3.39-4.084 9.974 9.974.0 0 1 3.72-.717c1.272-.02 2.272.399 3.206 1.316.93.921 1.356 1.907 1.336 3.16.0 1.296-.26 2.534-.728 3.667a11.599 11.599.0 0 0-4.144-3.342c.375.76.663 1.568.86 2.411m5.663 7.842a11.19 11.19.0 0 0-1.326-5.289 11.19 11.19.0 0 0 1.326-5.29 6.015 6.015.0 0 0-1.745-4.384c-.637-.628-2.146-1.757-4.447-1.719-1.937.0-3.762.474-5.367 1.307A11.619 11.619.0 0 0 6.193.213c-2.301-.038-3.81 1.091-4.447 1.72A6.014 6.014.0 0 0 .001 6.316c0 1.909.481 3.708 1.326 5.29a11.19 11.19.0 0 0-1.326 5.29 6.015 6.015.0 0 0 1.745 4.384c.637.628 2.145 1.757 4.447 1.719 1.937.0 3.762-.474 5.367-1.307a11.617 11.617.0 0 0 5.367 1.307c2.301.037 3.81-1.091 4.447-1.72a6.014 6.014.0 0 0 1.745-4.384" fill="#a2978b"></path>
