@@ -1,5 +1,9 @@
 # Cronofy UI Elements: demo application
 
+This repo is to be used alongside the [Developer Demo Tutorial](https://docs.cronofy.com/developers/getting-started/demo-app). This repo contains the starter code you need to follow along with the tutorial.
+
+You can view the finished code by checking out the `final` branch of this repo.
+
 ## Quickstart guide
 
 1. Clone this repository.
@@ -9,6 +13,8 @@
 ```
 CLIENT_ID="YOUR_CLIENT_ID_GOES_HERE"
 CLIENT_SECRET="YOUR_CLIENT_SECRET_GOES_HERE"
+ACCESS_TOKEN="YOUR_ACCESS_TOKEN_GOES_HERE"
+SUB="YOUR_SUB_GOES_HERE"
 ```
 
 4. Run `npm install`: this will download the required dependencies.
