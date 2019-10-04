@@ -11,9 +11,9 @@ CLIENT_ID="YOUR_CLIENT_ID_GOES_HERE"
 CLIENT_SECRET="YOUR_CLIENT_SECRET_GOES_HERE"
 ```
 
-1. Run `npm install`: this will download the required dependencies.
-2. Run `npm run start` to start the server.
-3. You can then view the running application at [http://localhost:7070/](http://localhost:7070/).
+4. Run `npm install`: this will download the required dependencies.
+5. Run `npm run start` to start the server.
+6. You can then view the running application at [http://localhost:7070/](http://localhost:7070/).
 
 ## Technologies used
 
