@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/"));
 const cronofyClient = new Cronofy({
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
-    access_token: process.env.ACCESS_TOKEN
+    access_token: process.env.ACCESS_TOKEN,
 });
 
 // Route: home
@@ -29,40 +29,74 @@ app.get("/", async (req, res) => {
     const codeQuery = req.query.code;
 
     if (codeQuery) {
-        const codeResponse = await cronofyClient.requestAccessToken({
-            client_id: process.env.CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
-            grant_type: "authorization_code",
-            code: codeQuery,
-            redirect_uri: "http://localhost:7070/"
-        });
+        const codeResponse = await cronofyClient
+            .requestAccessToken({
+                client_id: process.env.CLIENT_ID,
+                client_secret: process.env.CLIENT_SECRET,
+                grant_type: "authorization_code",
+                code: codeQuery,
+                redirect_uri: "http://localhost:7070/",
+            })
+            .catch((err) => {
+                if (err.error === "invalid_grant") {
+                    console.warn(
+                        "\x1b[33m",
+                        "\nWARNING:\nThere was a problem validating the `code` response. The provided code is not known, has been used, or was not paired with the provided redirect_uri.\n",
+                        "\x1b[0m"
+                    );
+                } else {
+                    console.warn(
+                        "\x1b[33m",
+                        "\nWARNING:\nThere was a problem validating the `code` response. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                        "\x1b[0m"
+                    );
+                }
+            });
     }
 
-    const token = await cronofyClient.requestElementToken({
-        version: "1",
-        permissions: ["managed_availability", "account_management"],
-        subs: [process.env.SUB],
-        origin: "http://localhost:7070"
-    });
+    const token = await cronofyClient
+        .requestElementToken({
+            version: "1",
+            permissions: ["managed_availability", "account_management"],
+            subs: [process.env.SUB],
+            origin: "http://localhost:7070",
+        })
+        .catch(() => {
+            console.error(
+                "\x1b[31m",
+                "\nERROR:\nThere was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                "\x1b[0m"
+            );
+            return { element_token: { token: "invalid" } };
+        });
 
     return res.render("home", {
         token: token.element_token.token,
-        client_id: process.env.CLIENT_ID
+        client_id: process.env.CLIENT_ID,
     });
 });
 
 // Route: availability
 app.get("/availability", async (req, res) => {
-    const token = await cronofyClient.requestElementToken({
-        version: "1",
-        permissions: ["availability"],
-        subs: [process.env.SUB],
-        origin: "http://localhost:7070"
-    });
+    const token = await cronofyClient
+        .requestElementToken({
+            version: "1",
+            permissions: ["availability"],
+            subs: [process.env.SUB],
+            origin: "http://localhost:7070",
+        })
+        .catch(() => {
+            console.error(
+                "\x1b[31m",
+                "\nERROR:\nThere was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                "\x1b[0m"
+            );
+            return { element_token: { token: "invalid" } };
+        });
 
     return res.render("availability", {
         token: token.element_token.token,
-        sub: process.env.SUB
+        sub: process.env.SUB,
     });
 });
 
@@ -84,8 +118,8 @@ app.get("/submit", async (req, res) => {
         start: slot.start,
         end: slot.end,
         location: {
-            description: "Board room"
-        }
+            description: "Board room",
+        },
     });
 
     const meetingDate = moment(slot.start).format("DD MMM YYYY");
@@ -95,7 +129,7 @@ app.get("/submit", async (req, res) => {
     return res.render("submit", {
         meetingDate: meetingDate,
         start: start,
-        end: end
+        end: end,
     });
 });
 

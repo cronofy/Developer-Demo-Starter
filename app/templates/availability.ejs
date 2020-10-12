@@ -61,7 +61,13 @@
                     callback: slot => interviewSubmit(slot)
                 };
 
-                CronofyElements.AvailabilityViewer(availabilityViewerOptions);
+                if ("<%= token %>" !== "invalid") {
+                    CronofyElements.AvailabilityViewer(availabilityViewerOptions);
+                } else {
+                    const errorMessageWrapper = document.querySelector('#cronofy-availability-viewer');
+                    errorMessageWrapper.innerHTML = "<span class='error'>There was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.</span>"
+                }
+
             </script>
 
         </div>

@@ -45,12 +45,18 @@
 
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            CronofyElements.AvailabilityRules({
-                element_token: "<%= token %>",
-                target_id: "cronofy-availability-rules",
-                availability_rule_id: "work_hours",
-                tzid: timezone
-            });
+            if ("<%= token %>" !== "invalid") {
+                CronofyElements.AvailabilityRules({
+                    element_token: "<%= token %>",
+                    target_id: "cronofy-availability-rules",
+                    availability_rule_id: "work_hours",
+                    tzid: timezone
+                });
+            } else {
+                const errorMessageWrapper = document.querySelector('#cronofy-availability-rules');
+                errorMessageWrapper.innerHTML = "<span class='error'>There was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.</span>"
+            }
+        
         </script>
 
         <footer class="footer">
