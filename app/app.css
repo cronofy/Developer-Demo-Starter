@@ -277,3 +277,12 @@ a.button:hover {
   color: #5f5f5f;
   text-align: center; }
 
+.error {
+  color: red;}
+
+.error code {
+  font-family: monospace;
+  display: inline-block;
+  padding: 4px;
+  background: #f00;
+  color: #fff;}

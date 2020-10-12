@@ -16,36 +16,118 @@ app.set("views", process.cwd() + "/app/templates");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/"));
 
-// Add the Cronofy client setup here
+const cronofyClient = new Cronofy({
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+    access_token: process.env.ACCESS_TOKEN,
+});
 
 // Route: home
 app.get("/", async (req, res) => {
-    // Homepage code goes here
+    const codeQuery = req.query.code;
+
+    if (codeQuery) {
+        const codeResponse = await cronofyClient
+            .requestAccessToken({
+                client_id: process.env.CLIENT_ID,
+                client_secret: process.env.CLIENT_SECRET,
+                grant_type: "authorization_code",
+                code: codeQuery,
+                redirect_uri: "http://localhost:7070/",
+            })
+            .catch((err) => {
+                if (err.error === "invalid_grant") {
+                    console.warn(
+                        "\x1b[33m",
+                        "\nWARNING:\nThere was a problem validating the `code` response. The provided code is not known, has been used, or was not paired with the provided redirect_uri.\n",
+                        "\x1b[0m"
+                    );
+                } else {
+                    console.warn(
+                        "\x1b[33m",
+                        "\nWARNING:\nThere was a problem validating the `code` response. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                        "\x1b[0m"
+                    );
+                }
+            });
+    }
+
+    const token = await cronofyClient
+        .requestElementToken({
+            version: "1",
+            permissions: ["managed_availability", "account_management"],
+            subs: [process.env.SUB],
+            origin: "http://localhost:7070",
+        })
+        .catch(() => {
+            console.error(
+                "\x1b[31m",
+                "\nERROR:\nThere was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                "\x1b[0m"
+            );
+            return { element_token: { token: "invalid" } };
+        });
 
     return res.render("home", {
-        token: "YOUR_TOKEN_GOES_HERE",
-        client_id: process.env.CLIENT_ID
+        token: token.element_token.token,
+        client_id: process.env.CLIENT_ID,
     });
 });
 
 // Route: availability
 app.get("/availability", async (req, res) => {
-    // Availability code goes here
+    const token = await cronofyClient
+        .requestElementToken({
+            version: "1",
+            permissions: ["availability"],
+            subs: [process.env.SUB],
+            origin: "http://localhost:7070",
+        })
+        .catch(() => {
+            console.error(
+                "\x1b[31m",
+                "\nERROR:\nThere was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                "\x1b[0m"
+            );
+            return { element_token: { token: "invalid" } };
+        });
 
     return res.render("availability", {
-        token: "YOUR_TOKEN_GOES_HERE",
-        sub: process.env.SUB
+        token: token.element_token.token,
+        sub: process.env.SUB,
     });
 });
 
 // Route: submit
 app.get("/submit", async (req, res) => {
-    // Submit code goes here
+    const slot = JSON.parse(req.query.slot);
+
+    const userInfo = await cronofyClient.userInfo();
+
+    const calendarId =
+        userInfo["cronofy.data"].profiles[0].profile_calendars[0].calendar_id;
+
+    cronofyClient.createEvent({
+        calendar_id: calendarId,
+        event_id: "developer_demo_event",
+        summary: "Demo meeting",
+        description:
+            "Developer demo has created this event to show that events can be added to a calendar.",
+        start: slot.start,
+        end: slot.end,
+        location: {
+            description: "Board room",
+        },
+    });
+
+    const meetingDate = moment(slot.start).format("DD MMM YYYY");
+    const start = moment(slot.start).format("LT");
+    const end = moment(slot.end).format("LT");
 
     return res.render("submit", {
-        meetingDate: "MEETING_DATE_GOES_HERE",
-        start: "START_TIME_GOES_HERE",
-        end: "END_TIME_GOES_HERE"
+        meetingDate: meetingDate,
+        start: start,
+        end: end,
     });
 });
 
