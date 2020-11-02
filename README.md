@@ -1,8 +1,11 @@
 # Cronofy UI Elements: demo application
 
-This repo is to be used alongside the [Developer Demo Tutorial](https://docs.cronofy.com/developers/getting-started/demo-app). This repo contains the starter code you need to follow along with the tutorial.
+This repo is to be used alongside the [Developer Demo Tutorial](https://docs.cronofy.com/developers/getting-started/demo-app).
 
-You can view the finished code by checking out the `final` branch of this repo.
+This repo contains two branches: `starter`, and `master`.
+
+* The starter code you need to follow along with the tutorial is on the `starter` branch. Checkout this branch if you want to work through the tutorial step-by-step.
+* The completed code for the tutorial is on the `master` branch. Checkout this branch if you want to view the full, finished code for the tutorial (including some extra error handling not covered in the tutorial itself).
 
 ## Quickstart guide
 
