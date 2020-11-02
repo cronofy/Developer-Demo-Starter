@@ -16,6 +16,7 @@ app.set("views", process.cwd() + "/app/templates");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/"));
 
+const Cronofy = require("cronofy");
 const cronofyClient = new Cronofy({
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
@@ -69,7 +70,7 @@ app.get("/", async (req, res) => {
         });
 
     return res.render("home", {
-        token: token.element_token.token,
+        element_token: token.element_token.token,
         client_id: process.env.CLIENT_ID,
     });
 });
@@ -93,7 +94,7 @@ app.get("/availability", async (req, res) => {
         });
 
     return res.render("availability", {
-        token: token.element_token.token,
+        element_token: token.element_token.token,
         sub: process.env.SUB,
     });
 });

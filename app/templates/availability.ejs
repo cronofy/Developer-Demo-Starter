@@ -23,14 +23,48 @@
 
         </div>
 
-                if ("<%= token %>" !== "invalid") {
-                    CronofyElements.AvailabilityViewer(availabilityViewerOptions);
-                } else {
-                    const errorMessageWrapper = document.querySelector('#cronofy-availability-viewer');
-                    errorMessageWrapper.innerHTML = "<span class='error'>There was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.</span>"
-                }
+        <script src="https://elements.cronofy.com/js/CronofyElements.v1.20.13.js"></script>
+        <script>
 
-            </script>
+            const availabilityViewerOptions = {
+                element_token: "<%= element_token %>",
+                target_id: "cronofy-availability-viewer",
+                availability_query: {
+                    participants: [
+                        {
+                            required: "all",
+                            members: [
+                                { sub: "<%= sub %>" }
+                            ]
+                        }
+                    ],
+                    required_duration: { minutes: 60 },
+                    available_periods: [
+                        { start: "2020-11-03T09:00:00Z", end: "2020-11-03T10:00:00Z" },
+                        { start: "2020-11-03T15:00:00Z", end: "2020-11-03T17:30:00Z" }
+                    ]
+                },
+                config: {
+                    start_time: "09:00",
+                    end_time: "15:30",
+                    interval: 15
+                },
+                callback: res => {
+                    if (res.notification.type !== "slot_selected") return;
+                    
+                    const slot = JSON.stringify(res.notification.slot);
+                    window.location.href = `/submit?slot=${slot}`;
+                }
+            };
+
+            if ("<%= element_token %>" !== "invalid") {
+                CronofyElements.AvailabilityViewer(availabilityViewerOptions);
+            } else {
+                const errorMessageWrapper = document.querySelector('#cronofy-availability-viewer');
+                errorMessageWrapper.innerHTML = "<span class='error'>There was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.</span>"
+            }
+
+        </script>
 
         <footer class="footer">
             <svg class='footer__logo' viewBox="0 0 23 23">
