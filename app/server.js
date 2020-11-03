@@ -46,7 +46,7 @@ app.get("/", async (req, res) => {
                 } else {
                     console.warn(
                         "\x1b[33m",
-                        "\nWARNING:\nThere was a problem validating the `code` response. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                        "\nWARNING:\nThere was a problem validating the `code` response. Check that your CLIENT_ID, CLIENT_SECRET, and SUB environment variables are correct.\n",
                         "\x1b[0m"
                     );
                 }
@@ -63,7 +63,7 @@ app.get("/", async (req, res) => {
         .catch(() => {
             console.error(
                 "\x1b[31m",
-                "\nERROR:\nThere was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                "\nERROR:\nThere was a problem generating the element token. Check that your CLIENT_ID, CLIENT_SECRET, and SUB environment variables are correct.\n",
                 "\x1b[0m"
             );
             return { element_token: { token: "invalid" } };
@@ -87,7 +87,7 @@ app.get("/availability", async (req, res) => {
         .catch(() => {
             console.error(
                 "\x1b[31m",
-                "\nERROR:\nThere was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.\n",
+                "\nERROR:\nThere was a problem generating the element token. Check that your CLIENT_ID, CLIENT_SECRET, and SUB environment variables are correct.\n",
                 "\x1b[0m"
             );
             return { element_token: { token: "invalid" } };
