@@ -13,21 +13,22 @@
         <div class="wrapper__inner">
 
             <a href="/" class="link--secondary">Back to homepage</a>
-            
+
             <h1>Book an event</h1>
             <p>Pick a day and time that works for you</p>
-                
+
             <div class="element__wrapper">
                 <div id="cronofy-availability-viewer"></div>
             </div>
 
         </div>
 
-        <script src="https://elements.cronofy.com/js/CronofyElements.v1.20.13.js"></script>
+        <script src="https://elements.cronofy.com/js/CronofyElements.v1.32.0.js"></script>
         <script>
 
             const availabilityViewerOptions = {
                 element_token: "<%= element_token %>",
+                data_center: "<%= data_center %>",
                 target_id: "cronofy-availability-viewer",
                 availability_query: {
                     participants: [
@@ -51,7 +52,7 @@
                 },
                 callback: res => {
                     if (res.notification.type !== "slot_selected") return;
-                    
+
                     const slot = JSON.stringify(res.notification.slot);
                     window.location.href = `/submit?slot=${slot}`;
                 }

@@ -20,6 +20,7 @@ const Cronofy = require("cronofy");
 const cronofyClient = new Cronofy({
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
+    data_center: process.env.DATA_CENTER,
     access_token: process.env.ACCESS_TOKEN,
 });
 
@@ -72,6 +73,7 @@ app.get("/", async (req, res) => {
     return res.render("home", {
         element_token: token.element_token.token,
         client_id: process.env.CLIENT_ID,
+        data_center: process.env.DATA_CENTER,
     });
 });
 
@@ -95,6 +97,7 @@ app.get("/availability", async (req, res) => {
 
     return res.render("availability", {
         element_token: token.element_token.token,
+        data_center: process.env.DATA_CENTER,
         sub: process.env.SUB,
     });
 });

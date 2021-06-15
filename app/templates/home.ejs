@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper__outer">
         <div class="wrapper__inner">
-                
+
             <h1>Settings</h1>
             <p>Connect calendar profiles, and set your working hours.</p>
 
@@ -19,22 +19,23 @@
                 <div id="cronofy-calendar-sync"></div>
             </div>
 
-            <div>    
+            <div>
                 <a href="/availability" class="button">View availability</a>
             </div>
 
             <hr>
-            
+
             <h2 class="title-heading">Set your work hours</h2>
-            
+
             <div id="cronofy-availability-rules"></div>
 
         </div>
 
-        <script src="https://elements.cronofy.com/js/CronofyElements.v1.20.13.js"></script>
+        <script src="https://elements.cronofy.com/js/CronofyElements.v1.32.0.js"></script>
         <script>
             CronofyElements.CalendarSync({
                 element_token: "<%= element_token %>",
+                data_center: "<%= data_center %>",
                 target_id: "cronofy-calendar-sync",
                 authorization: {
                     redirect_uri: "http://localhost:7070/",
@@ -44,10 +45,11 @@
             });
 
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            
+
             if ("<%= element_token %>" !== "invalid") {
                 CronofyElements.AvailabilityRules({
                     element_token: "<%= element_token %>",
+                    data_center: "<%= data_center %>",
                     target_id: "cronofy-availability-rules",
                     availability_rule_id: "work_hours",
                     tzid: timezone
@@ -56,7 +58,7 @@
                 const errorMessageWrapper = document.querySelector('#cronofy-availability-rules');
                 errorMessageWrapper.innerHTML = "<span class='error'>There was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.</span>"
             }
-        
+
         </script>
 
         <footer class="footer">
