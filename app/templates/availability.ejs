@@ -18,18 +18,18 @@
             <p>Pick a day and time that works for you</p>
 
             <div class="element__wrapper">
-                <div id="cronofy-availability-viewer"></div>
+                <div id="cronofy-date-time-picker"></div>
             </div>
 
         </div>
 
-        <script src="https://elements.cronofy.com/js/CronofyElements.v1.32.0.js"></script>
+        <script src="https://elements.cronofy.com/js/CronofyElements.v1.35.4.js"></script>
         <script>
 
-            const availabilityViewerOptions = {
+            const dateTimePickerOptions = {
                 element_token: "<%= element_token %>",
                 data_center: "<%= data_center %>",
-                target_id: "cronofy-availability-viewer",
+                target_id: "cronofy-date-time-picker",
                 availability_query: {
                     participants: [
                         {
@@ -45,11 +45,6 @@
                         { start: "2020-11-03T15:00:00Z", end: "2020-11-03T17:30:00Z" }
                     ]
                 },
-                config: {
-                    start_time: "09:00",
-                    end_time: "15:30",
-                    interval: 15
-                },
                 callback: res => {
                     if (res.notification.type !== "slot_selected") return;
 
@@ -59,9 +54,9 @@
             };
 
             if ("<%= element_token %>" !== "invalid") {
-                CronofyElements.AvailabilityViewer(availabilityViewerOptions);
+                CronofyElements.DateTimePicker(dateTimePickerOptions);
             } else {
-                const errorMessageWrapper = document.querySelector('#cronofy-availability-viewer');
+                const errorMessageWrapper = document.querySelector('#cronofy-date-time-picker');
                 errorMessageWrapper.innerHTML = "<span class='error'>There was a problem generating the element token. Check that your <code>CLIENT_ID</code>, <code>CLIENT_SECRET</code>, and <code>SUB</code> environment variables are correct.</span>"
             }
 
