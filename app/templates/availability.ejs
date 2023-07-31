@@ -25,6 +25,12 @@
 
         <script src="https://elements.cronofy.com/js/CronofyElements.v1.35.4.js"></script>
         <script>
+            const dateStart = new Date();
+            const dateEnd = new Date();
+            dateEnd.setDate(dateStart.getDate() + 14);
+            // The microsecond part of an ISO date string must be removed.
+            const dateStartString = dateStart.toISOString().replace(/\.\d+/, '');
+            const dateEndString = dateEnd.toISOString().replace(/\.\d+/, '');
 
             const dateTimePickerOptions = {
                 element_token: "<%= element_token %>",
@@ -41,8 +47,7 @@
                     ],
                     required_duration: { minutes: 60 },
                     available_periods: [
-                        { start: "2020-11-03T09:00:00Z", end: "2020-11-03T10:00:00Z" },
-                        { start: "2020-11-03T15:00:00Z", end: "2020-11-03T17:30:00Z" }
+                        { start: dateStartString, end: dateEndString }
                     ]
                 },
                 callback: res => {
