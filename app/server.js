@@ -1,10 +1,5 @@
 // Import the dependencies
-const dotenv = require("dotenv");
 const express = require("express");
-const bodyParser = require("body-parser");
-
-// Enable dotenv
-dotenv.config();
 
 // Setup
 const PORT = 7070;
@@ -13,7 +8,6 @@ const PORT = 7070;
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", process.cwd() + "/app/templates");
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/"));
 
 // Add the Cronofy client setup here
