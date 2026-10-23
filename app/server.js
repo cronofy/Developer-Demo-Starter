@@ -1,19 +1,24 @@
 // Import the dependencies
-const dotenv = require("dotenv");
 const express = require("express");
-const bodyParser = require("body-parser");
-
-// Enable dotenv
-dotenv.config();
 
 // Setup
 const PORT = 7070;
+
+// Date formatters for the submit page, e.g. "23 Oct 2026" and "10:00 AM"
+const dateFormat = new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+});
+const timeFormat = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+});
 
 // Setup Express
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", process.cwd() + "/app/templates");
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/"));
 
 const Cronofy = require("cronofy");
@@ -124,9 +129,9 @@ app.get("/submit", async (req, res) => {
         },
     });
 
-    const meetingDate = moment(slot.start).format("DD MMM YYYY");
-    const start = moment(slot.start).format("LT");
-    const end = moment(slot.end).format("LT");
+    const meetingDate = dateFormat.format(new Date(slot.start));
+    const start = timeFormat.format(new Date(slot.start));
+    const end = timeFormat.format(new Date(slot.end));
 
     return res.render("submit", {
         meetingDate: meetingDate,
